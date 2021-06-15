@@ -34,7 +34,7 @@ jobs:
         with:
           push: true
           tags: |
-            "ghcr.io/${{ github.repository_owner }}/bot:${{ env.GITHUB_RUN_ID }}"
+            "ghcr.io/${{ github.repository_owner }}/bot:${{ github.GITHUB_RUN_ID }}"
             "ghcr.io/${{ github.repository_owner }}/bot:latest"
 
       - name: Image digest
@@ -44,4 +44,4 @@ jobs:
         if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          description: 'If successful, the new latest image is ${{ env.GITHUB_RUN_ID }}'
+          description: 'If successful, the new latest image is ${{ github.GITHUB_RUN_ID }}'
