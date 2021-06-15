@@ -5,11 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "pretty": "prettier --write .",
-    "docker:build": "docker build -t astro/bot:latest .",
-    "docker:start": "docker run -d --name astro-bot astro/bot:latest && docker logs astro-bot --follow",
+    "docker:build": "docker build -t 4lch4/bot:latest .",
+    "docker:start": "docker run -d --name astro-bot 4lch4/bot:latest && docker logs astro-bot --follow",
     "docker:stop": "docker stop astro-bot && docker rm astro-bot",
-    "start": "node src/index.js",
-    "package": "tsc"
+    "docker:refresh": "yarn docker:stop && yarn docker:build && yarn docker:start",
+    "start": "node src/index.js"
   },
   "repository": {
     "type": "git",

@@ -1,15 +1,17 @@
 const { CommandoClient } = require('discord.js-commando')
 const { join } = require('path')
+const {
+  authToken,
+  commandPrefix,
+  homeChannel,
+  invite,
+  ownerIds
+} = require('./lib/Config')
 
 const client = new CommandoClient({
-  commandPrefix: 'a!',
-  owner: [
-    '709083909996019845',
-    '219270060936527873',
-    '217474298594590720',
-    '812388028282437653'
-  ],
-  invite: 'https://discord.gg/uFdzTvtB2Z'
+  owner: ownerIds,
+  commandPrefix,
+  invite
 })
 
 client.registry
@@ -29,8 +31,8 @@ client.once('ready', () => {
 
 client.on('error', console.error)
 
-client
-  .login('ODU0Mzg4ODMwODgzMDIwODEw.YMjNmw.9YSK9I-pAc1whMvsE0gVuFxh2cM')
-  .then(() => {
-    client.channels.cache.get('854359108820008960').send('Hello!')
+client.login(authToken).then(() => {
+  client.channels.fetch(homeChannel).then(channel => {
+    channel.send('Hello!')
   })
+})
