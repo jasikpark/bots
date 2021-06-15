@@ -33,6 +33,7 @@ client.on('error', console.error)
 
 client.login(authToken).then(() => {
   client.channels.fetch(homeChannel).then(channel => {
-    channel.send('Hello!')
+    channel.send('Astro-bot has come online!')
+    console.log('Astro-bot has come online!')
   })
 })
