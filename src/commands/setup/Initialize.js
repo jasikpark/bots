@@ -12,7 +12,8 @@ class InitializeCommand extends Command {
         {
           key: 'ghUsername',
           prompt: 'What is your GitHub username?',
-          label: 'GitHub Username'
+          label: 'GitHub Username',
+          type: 'string'
         }
       ]
     })
