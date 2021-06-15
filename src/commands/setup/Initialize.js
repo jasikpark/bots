@@ -7,12 +7,21 @@ class InitializeCommand extends Command {
       group: 'setup',
       memberName: 'init',
       name: 'initialize',
-      aliases: ['init']
+      aliases: ['init'],
+      args: [
+        {
+          key: 'ghUsername',
+          prompt: 'What is your GitHub username?',
+          label: 'GitHub Username'
+        }
+      ]
     })
   }
 
-  async run(message) {
-    return message.say('Working!')
+  async run(message, args) {
+    return message.say(
+      `If I'm not mistaken, your GitHub username is @${args.ghUsername}`
+    )
   }
 }
 
