@@ -34,8 +34,13 @@ jobs:
         with:
           push: true
           tags: |
-            "ghcr.io/snowpackjs/bot:${{ env.BUILD_TAG }}"
-            "ghcr.io/snowpackjs/bot:latest"
+            "ghcr.io/${{ github.repository_owner }}/bot:${{ env.BUILD_TAG }}"
+            "ghcr.io/${{ github.repository_owner }}/bot:latest"
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
+
+      # - uses: sarisia/actions-status-discord@v1
+      #   if: always()
+      #   with:
+      #     webhook: ${{ secrets.DISCORD_WEBHOOK }}
