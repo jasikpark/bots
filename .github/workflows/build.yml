@@ -44,4 +44,4 @@ jobs:
         if: always()
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          description: 'If successful, the new latest image is ${{ github.GITHUB_RUN_ID }}'
+          description: 'If successful, the new latest image is ${{ github.RUN_ID }}'
