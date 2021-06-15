@@ -34,8 +34,8 @@ jobs:
         with:
           push: true
           tags: |
-            "${{ secrets.IMAGE_NAME }}:${{ env.BUILD_TAG }}"
-            "${{ secrets.IMAGE_NAME }}:latest"
+            "ghcr.io/snowpackjs/bot:${{ env.BUILD_TAG }}"
+            "ghcr.io/snowpackjs/bot:latest"
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
