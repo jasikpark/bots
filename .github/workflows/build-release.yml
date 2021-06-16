@@ -35,6 +35,7 @@ jobs:
           push: true
           tags: |
             "ghcr.io/${{ github.repository_owner }}/bot:${{ github.RUN_ID }}"
+            "ghcr.io/${{ github.repository_owner }}/bot:beta"
             "ghcr.io/${{ github.repository_owner }}/bot:latest"
 
       - name: Image digest
