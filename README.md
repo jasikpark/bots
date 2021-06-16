@@ -1,5 +1,7 @@
 # Astro Bot
 
+> beep boop beep boop
+
 This repository contains the code for the Astro Bot, which is a Discord chat bot for the [Astro][0] community Discord server.
 
 ## Usage
