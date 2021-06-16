@@ -1,5 +1,5 @@
 const getUsers = 'SELECT * FROM Users'
-const getUser = userId => `SELECT * FROM USERS WHERE UserID = '${userId}'`
+const getUser = userId => `SELECT * FROM Users WHERE UserID = '${userId}'`
 const insertUser = (userId, githubUsername) => {
   return `
   INSERT INTO Users (UserID, GitHubUsername, CreateTimestamp, LastUpdateTimestamp)

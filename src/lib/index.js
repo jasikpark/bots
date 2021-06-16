@@ -1,1 +1,10 @@
-// export * from './Config'
+const DBUtil = require('./DBUtil')
+const Config = require('./Config')
+const { connection, queries } = require('./db')
+
+module.exports = {
+  DBUtil,
+  Config,
+  connection,
+  queries
+}

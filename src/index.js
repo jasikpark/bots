@@ -19,19 +19,17 @@ client.registry
   .registerDefaultGroups()
   .registerGroups([
     ['setup', 'Commands to help you get started working with Astro.'],
-    ['builds', 'Commands related to the builds of Astro products/projects.']
+    ['builds', 'Commands related to the builds of Astro products/projects.'],
+    [
+      'users',
+      'Commands related to all things user related. Such as displaying stored data, modifying existing data, etc.'
+    ]
   ])
   .registerDefaultCommands()
   .registerCommandsIn(join(__dirname, 'commands'))
 
 client.once('ready', () => {
-  console.log(`Logged in as ${client?.user?.tag}! (${client?.user?.id})`)
-  client?.user?.setActivity('with Commando')
-
-  connection.query('SELECT * FROM Users', (err, res) => {
-    if (err) console.error(err)
-    else console.log(res)
-  })
+  client?.user?.setActivity('with Astro.build')
 })
 
 client.on('error', console.error)
