@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando')
-const {DBUtil, GHUtil} = require('../../lib/DBUtil')
+const { DBUtil } = require('../../lib/DBUtil')
 
 class LinkCommand extends Command {
   constructor(client) {
@@ -22,13 +22,13 @@ class LinkCommand extends Command {
 
   async run(message, args) {
     try {
-      const ghUtil = new GHUtil()
+      // const ghUtil = new GHUtil()
       const dbUtil = new DBUtil()
 
-      const user = await ghUtil.validateUsername(args.ghUsername)
-      console.log(user)
+      // const user = await ghUtil.validateUsername(args.ghUsername)
+      // console.log(user)
 
-      // await dbUtil.insertUser(message.author.id, args.ghUsername)
+      await dbUtil.insertUser(message.author.id, args.ghUsername)
 
       return message.say(
         'Congratulations! Your Discord account is now associated with your GitHub Username.'
