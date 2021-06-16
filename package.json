@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "pretty": "prettier --write .",
-    "docker:build": "docker build -t snowpackjs/bot:latest .",
+    "docker:build": "docker build -t ghcr.io/snowpackjs/bot:latest .",
     "docker:start": "./start.sh && docker logs astro-bot --follow",
     "docker:stop": "docker stop astro-bot && docker rm astro-bot",
     "docker:refresh": "yarn docker:stop && yarn docker:build && yarn docker:start",
@@ -39,7 +39,8 @@
   "homepage": "https://github.com/snowpackjs/bots#readme",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "discord.js-commando": "^0.12.3"
+    "discord.js-commando": "^0.12.3",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {
     "@types/node": "^15.12.2",

@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando')
+const DBUtil = require('../../lib/DBUtil')
 
 class InitializeCommand extends Command {
   constructor(client) {
@@ -20,9 +21,31 @@ class InitializeCommand extends Command {
   }
 
   async run(message, args) {
-    return message.say(
-      `If I'm not mistaken, your GitHub username is @${args.ghUsername}`
-    )
+    try {
+      const dbUtil = new DBUtil()
+      await dbUtil.insertUser(message.author.id, args.ghUsername)
+
+      return message.say(
+        'Congratulations! Your Discord account is now associated with your GitHub Username.'
+      )
+    } catch (err) {
+      if (err.code === 'ER_DUP_ENTRY') {
+        return message.say(
+          'There is already a GitHub account associated with your User ID.'
+          // 'Please use the `a!update` command to change any settings.'
+        )
+      } else {
+        console.error(
+          'Generic error caught when attempting to run the insert command.'
+        )
+        console.error(err)
+        return message.say(
+          'I seem to have encountered an error my creators did not anticipate. ' +
+            'Please let the developers know so they can refer to the logs and ' +
+            'find out what happened.'
+        )
+      }
+    }
   }
 }
 

@@ -21,7 +21,7 @@ docker run -d \
   -e COMMAND_PREFIX='' \
   -e HOME_CHANNEL='' \
   -e OWNER_IDS=',' \
-  --name astro-bot snowpackjs/bot:latest
+  --name astro-bot ghcr.io/snowpackjs/bot:latest
 ```
 
 [0]: https://astro.build

@@ -2,7 +2,7 @@ name: Build Docker Image
 
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, feat-gh-setup]
   pull_request:
     branches: [main, develop]
 

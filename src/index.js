@@ -27,6 +27,11 @@ client.registry
 client.once('ready', () => {
   console.log(`Logged in as ${client?.user?.tag}! (${client?.user?.id})`)
   client?.user?.setActivity('with Commando')
+
+  connection.query('SELECT * FROM Users', (err, res) => {
+    if (err) console.error(err)
+    else console.log(res)
+  })
 })
 
 client.on('error', console.error)
