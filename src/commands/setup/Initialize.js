@@ -21,12 +21,31 @@ class InitializeCommand extends Command {
   }
 
   async run(message, args) {
-    const dbUtil = new DBUtil()
-    const dbRes = await dbUtil.createUser(message.author.id, args.ghUsername)
-    console.log(dbRes)
-    return message.say(
-      `I think I stored it correctly...`
-    )
+    try {
+      const dbUtil = new DBUtil()
+      await dbUtil.insertUser(message.author.id, args.ghUsername)
+
+      return message.say(
+        'Congratulations! Your Discord account is now associated with your GitHub Username.'
+      )
+    } catch (err) {
+      if (err.code === 'ER_DUP_ENTRY') {
+        return message.say(
+          'There is already a GitHub account associated with your User ID.'
+          // 'Please use the `a!update` command to change any settings.'
+        )
+      } else {
+        console.error(
+          'Generic error caught when attempting to run the insert command.'
+        )
+        console.error(err)
+        return message.say(
+          'I seem to have encountered an error my creators did not anticipate. ' +
+            'Please let the developers know so they can refer to the logs and ' +
+            'find out what happened.'
+        )
+      }
+    }
   }
 }
 
