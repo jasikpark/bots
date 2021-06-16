@@ -1,4 +1,5 @@
 const { Command } = require('discord.js-commando')
+const DBUtil = require('../../lib/DBUtil')
 
 class InitializeCommand extends Command {
   constructor(client) {
@@ -20,8 +21,11 @@ class InitializeCommand extends Command {
   }
 
   async run(message, args) {
+    const dbUtil = new DBUtil()
+    const dbRes = await dbUtil.createUser(message.author.id, args.ghUsername)
+    console.log(dbRes)
     return message.say(
-      `If I'm not mistaken, your GitHub username is @${args.ghUsername}`
+      `I think I stored it correctly...`
     )
   }
 }
