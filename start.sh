@@ -7,7 +7,8 @@ docker run -d \
   -e COMMAND_PREFIX='' \
   -e INVITE='' \
   -e HOME_CHANNEL='' \
-  -e OWNER_IDS=',' \
-  --name astro-bot snowpackjs/bot:latest
+  -e OWNER_IDS='' \
+  -e DB_CONNECTION_STRING='' \
+  --name astro-bot ghcr.io/snowpackjs/bot:latest
 
 docker logs astro-bot --follow
