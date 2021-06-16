@@ -1,13 +1,13 @@
 const { Command } = require('discord.js-commando')
-const DBUtil = require('../../lib/DBUtil')
+const {DBUtil, GHUtil} = require('../../lib/utils')
 
-class InitializeCommand extends Command {
+class LinkCommand extends Command {
   constructor(client) {
     super(client, {
       description: 'The first command to run when joining the Astro community.',
       group: 'setup',
-      memberName: 'init',
-      name: 'initialize',
+      memberName: 'link',
+      name: 'link',
       aliases: ['init'],
       args: [
         {
@@ -22,8 +22,13 @@ class InitializeCommand extends Command {
 
   async run(message, args) {
     try {
+      const ghUtil = new GHUtil()
       const dbUtil = new DBUtil()
-      await dbUtil.insertUser(message.author.id, args.ghUsername)
+
+      const user = await ghUtil.validateUsername(args.ghUsername)
+      console.log(user)
+
+      // await dbUtil.insertUser(message.author.id, args.ghUsername)
 
       return message.say(
         'Congratulations! Your Discord account is now associated with your GitHub Username.'
@@ -49,4 +54,4 @@ class InitializeCommand extends Command {
   }
 }
 
-module.exports = InitializeCommand
+module.exports = LinkCommand
