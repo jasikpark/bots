@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "description": "A Discord bot for the Astro Discord.",
   "main": "src/index.js",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "scripts": {
     "pretty": "prettier --write .",
     "docker:build": "docker build -t ghcr.io/snowpackjs/bot:latest .",
