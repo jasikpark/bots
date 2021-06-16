@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando')
-const {DBUtil, GHUtil} = require('../../lib/utils')
+const {DBUtil, GHUtil} = require('../../lib/DBUtil')
 
 class LinkCommand extends Command {
   constructor(client) {
