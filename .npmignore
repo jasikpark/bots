@@ -1,0 +1,13 @@
+node_modules/
+.github/
+coverage/
+sql/
+.dockerignore
+Dockerfile
+local.settings.json
+.git
+.gitignore
+Astro-Logo.png
+.prettierrc
+start.sh
+yarn.lock
