@@ -1,10 +1,9 @@
-name: Build Docker Image
+name: Build Prod/Stable Docker Image
 
 on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main, develop]
+  release:
+    types:
+      - published
 
 jobs:
   build:
@@ -35,7 +34,7 @@ jobs:
           push: true
           tags: |
             "ghcr.io/${{ github.repository_owner }}/bot:${{ github.RUN_ID }}"
-            "ghcr.io/${{ github.repository_owner }}/bot:beta"
+            "ghcr.io/${{ github.repository_owner }}/bot:stable"
             "ghcr.io/${{ github.repository_owner }}/bot:latest"
 
       - name: Image digest
