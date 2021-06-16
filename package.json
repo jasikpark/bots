@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A Discord bot for the Astro Discord.",
   "main": "src/index.js",
+  "files": ["./src"],
   "scripts": {
     "pretty": "prettier --write .",
     "docker:build": "docker build -t ghcr.io/snowpackjs/bot:latest .",
@@ -44,7 +45,6 @@
     "mysql2": "^2.2.5"
   },
   "devDependencies": {
-    "@types/node": "^15.12.2",
     "pm2": "^5.1.0",
     "prettier": "^2.3.1"
   }
