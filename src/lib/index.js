@@ -1,4 +1,4 @@
-const DBUtil = require('./DBUtil')
+const { DBUtil } = require('./utils')
 const Config = require('./Config')
 const { connection, queries } = require('./db')
 

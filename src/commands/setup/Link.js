@@ -1,10 +1,10 @@
 const { Command } = require('discord.js-commando')
-const { DBUtil } = require('../../lib/DBUtil')
+const { DBUtil, GHUtil } = require('../../lib/utils')
 
 class LinkCommand extends Command {
   constructor(client) {
     super(client, {
-      description: 'The first command to run when joining the Astro community.',
+      description: 'Links your Discord user id to your GitHub username.',
       group: 'setup',
       memberName: 'link',
       name: 'link',
@@ -22,17 +22,21 @@ class LinkCommand extends Command {
 
   async run(message, args) {
     try {
-      // const ghUtil = new GHUtil()
+      const ghUtil = new GHUtil()
       const dbUtil = new DBUtil()
 
-      // const user = await ghUtil.validateUsername(args.ghUsername)
-      // console.log(user)
+      const user = await ghUtil.validateUsername(args.ghUsername)
+      if (user.status === 404) {
+        return message.say(
+          `The provided username (${args.ghUsername}) does not exist. Please try again.`
+        )
+      } else {
+        await dbUtil.insertUser(message.author.id, args.ghUsername)
 
-      await dbUtil.insertUser(message.author.id, args.ghUsername)
-
-      return message.say(
-        'Congratulations! Your Discord account is now associated with your GitHub Username.'
-      )
+        return message.say(
+          'Congratulations! Your Discord account is now associated with your GitHub Username.'
+        )
+      }
     } catch (err) {
       if (err.code === 'ER_DUP_ENTRY') {
         return message.say(

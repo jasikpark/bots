@@ -1,5 +1,5 @@
-const { connection } = require('./db')
-const { UserQueries } = require('./db/queries')
+const { connection } = require('../db')
+const { UserQueries } = require('../db/queries')
 
 /**
  * Formats the given array of rows into an easier to read format.
