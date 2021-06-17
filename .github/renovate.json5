@@ -1,0 +1,16 @@
+{
+  // documentation at https://docs.renovatebot.com/config-presets/
+  extends: [
+    'config:base',
+    // :automerge et. all should drastically cut down on extra pr's
+    ':automergeBranch',
+    ':automergeRequireAllStatusChecks',
+    ':automergeLinters',
+    ':automergeTypes',
+    ':enableVulnerabilityAlerts',
+    ':maintainLockFilesMonthly'
+  ],
+  assignees: [],
+  // Must exist for at least one day
+  stabilityDays: 1
+}
